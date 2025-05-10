@@ -353,11 +353,11 @@ app.get('/', (req, res) => {
 
 
 // --- Start the Server ---
-app.listen(PORT, () => {
-  console.log(`MyFlix Backend server is running on http://localhost:${PORT}`);
-  console.log(`CORS configured for origin: ${FRONTEND_URL}`);
-  console.log(`Raw process.env.FRONTEND_URL: ${process.env.FRONTEND_URL}`);
-});
+app.listen(PORT, '0.0.0.0', () => { // <--- Added '0.0.0.0' here
+    console.log(`MyFlix Backend server is running on port ${PORT}`); // Simpler log for production
+    console.log(`CORS configured for origin: ${FRONTEND_URL}`);
+  //  console.log(`Raw process.env.FRONTEND_URL: ${process.env.FRONTEND_URL}`); // You can comment this out for production if you like
+  });
 
 // --- Graceful Shutdown ---
 process.on('SIGINT', async () => {
